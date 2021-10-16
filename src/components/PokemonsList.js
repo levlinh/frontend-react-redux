@@ -3,13 +3,24 @@ import { connect } from "react-redux";
 import { deletePokemon } from "../actions/pokemon";
 
 class PokemonsList extends React.Component {
-  handleClick(id) {
-    this.props
-      .dispatchDeletePokemon({ id })
-      .then(this.props.history.push("/pokemons_list"));
+  constructor(props) {
+    super(props);
+    this.state = {
+      messageError: "",
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick(id) {
+    // debugger;
+    this.props
+      .dispatchDeletePokemon(id)
+      .then(() => this.props.history.push("/pokemons_list"));
+  }
+
   render() {
     const { pokemons } = this.props.pokemon;
+    // debugger;
     return (
       <div className="container">
         <h1>There are list pokemons</h1>
@@ -26,7 +37,7 @@ class PokemonsList extends React.Component {
           <tbody>
             {pokemons.map((pokemon) => {
               return (
-                <tr>
+                <tr key={pokemon.id}>
                   <th scope="row">1</th>
                   <td>{pokemon.attributes.name}</td>
                   <td>{pokemon.attributes.height} cm</td>
@@ -35,7 +46,7 @@ class PokemonsList extends React.Component {
                     <button
                       type="button"
                       className="btn btn-danger"
-                      onClick={this.handleClick(pokemon.attributes.id)}
+                      onClick={() => this.handleClick(pokemon.attributes.id)}
                     >
                       Delete
                     </button>{" "}

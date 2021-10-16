@@ -25,7 +25,7 @@ class Home extends React.Component {
             <div className="row">
               {pokemons.length > 0
                 ? pokemons.map((e) => {
-                    return <CardPokemon pokemon={e} />;
+                    return <CardPokemon key={e.id.toString()} pokemon={e} />;
                   })
                 : this.renderMessagesNoPokemon()}
             </div>

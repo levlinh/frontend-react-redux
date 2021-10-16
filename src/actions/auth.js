@@ -77,7 +77,6 @@ export const logoutUser = () => {
         },
       })
       .then((response) => {
-        debugger;
         console.log(response);
         return dispatch({ type: NOT_AUTHENTICATED });
       })
@@ -86,5 +85,3 @@ export const logoutUser = () => {
       });
   };
 };
-
-// export { getToken, setToken };

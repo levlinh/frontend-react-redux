@@ -8,10 +8,14 @@ export default function pokemonReducer(state = initialState, action) {
   switch (action.type) {
     case SET_POKEMONS:
       return {
-        pokemons: action.payload.data.data,
+        pokemons: action.payload.data,
       };
     case DELETE_POKEMON:
-      return state.pokemons.filter(({ id }) => id !== action.payload.id);
+      const pokemons = state.pokemons.filter(
+        ({ id }) => id !== action.payload.toString()
+      );
+      state.pokemons = pokemons;
+      return state;
     default:
       return state;
   }

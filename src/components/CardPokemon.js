@@ -7,11 +7,7 @@ class CardPokemon extends React.Component {
     return (
       <div className="col-md-3 col-sm-6 col-12">
         <div className="card card-product mb-3">
-          <img
-            className="card-img-top"
-            src={pokemon.attributes.image}
-            alt="Card image cap"
-          />
+          <img className="card-img-top" src={pokemon.attributes.image} alt="" />
           <div className="card-body">
             <h5 className="card-title">{pokemon.attributes.name}</h5>
             <p className="card-text">{pokemon.attributes.description}</p>
